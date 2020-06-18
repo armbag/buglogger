@@ -5,15 +5,24 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 
-const AddLogItem = () => {
+const AddLogItem = ({ addItem }) => {
 	const [text, setText] = useState('')
 	const [user, setUser] = useState('')
 	const [priority, setPriority] = useState('')
 
+	const handleFormSubmit = (e) => {
+		e.preventDefault()
+		addItem({ text, user, priority })
+
+		setText('')
+		setUser('')
+		setPriority('')
+	}
+
 	return (
 		<Card className='mt-5 mb-3'>
 			<Card.Body>
-				<Form>
+				<Form onSubmit={handleFormSubmit}>
 					<Row className='my-3'>
 						<Col>
 							<Form.Control
@@ -37,7 +46,7 @@ const AddLogItem = () => {
 								value={priority}
 								onChange={(e) => setPriority(e.target.value)}
 							>
-								<option value='0'></option>
+								<option value='0'>Select your option</option>
 								<option value='low'>Low</option>
 								<option value='moderate'>Moderate</option>
 								<option value='high'>High</option>

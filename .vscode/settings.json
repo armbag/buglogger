@@ -4,5 +4,6 @@
 	"javascript.validate.enable": false,
 	"emmet.includeLanguages": {
 		"javascript": "javascriptreact"
-	}
+	},
+	"prettier.semi": false
 }
